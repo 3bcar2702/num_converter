@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:num_converter/screens/widgets/cutom_dropdown_list.dart';
+import 'package:num_converter/screens/widgets/my_app_bar.dart';
 
-class HomePage extends StatelessWidget {
-  String decimal = '0', hexa = '0', octal = '0', binary = '0';
+List<DropdownMenuItem<String>> numSystems = [
+  DropdownMenuItem(child: Text("binary"), value: "binary"),
+  DropdownMenuItem(child: Text("decimal"), value: "decimal"),
+  DropdownMenuItem(child: Text("hexa-decimal"), value: "hexa-decimal"),
+  DropdownMenuItem(child: Text("octal"), value: "octal"),
+];
+
+String? inputSystem;
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -14,17 +31,33 @@ class HomePage extends StatelessWidget {
         ),
         Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            backgroundColor: Color.fromARGB(119, 4, 153, 252),
-            title: Text(
-              "My Num converter app",
-              style: TextStyle(color: Colors.white),
-            ),
-            leading: Image.asset(
-              "assets/images/image_fx-removebg-preview_upscayl_5x_upscayl-standard-4x.png",
-              height: 200,
-              width: 200,
-            ),
+          appBar: myAppBar(),
+          body: Column(
+            children: [
+              Text(
+                'choose the number system',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              SizedBox(height: 10),
+              custonDropdownList(),
+              Text(
+                'input the number',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              SizedBox(height: 10),
+              Container(
+                height: 50,
+                width: 300,
+                color: const Color.fromARGB(255, 118, 129, 146),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
+                  child: TextField(
+                    onChanged: (value) {},
+                    keyboardType: TextInputType.number,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],
