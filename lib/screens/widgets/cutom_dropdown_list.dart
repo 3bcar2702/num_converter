@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:num_converter/screens/home_page.dart';
 
-class custonDropdownList extends StatefulWidget {
-  const custonDropdownList({super.key});
+class CustonDropdownList extends StatefulWidget {
+  const CustonDropdownList({super.key});
   @override
-  _custonDropdownList createState() => _custonDropdownList();
+  _CustonDropdownList createState() => _CustonDropdownList();
 }
 
-class _custonDropdownList extends State<custonDropdownList> {
+class _CustonDropdownList extends State<CustonDropdownList> {
   @override
   Widget build(BuildContext context) {
     return Center(

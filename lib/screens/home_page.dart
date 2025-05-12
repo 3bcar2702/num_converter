@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:num_converter/screens/widgets/custom_text_button.dart';
+import 'package:num_converter/screens/widgets/custom_text_field.dart';
 import 'package:num_converter/screens/widgets/cutom_dropdown_list.dart';
 import 'package:num_converter/screens/widgets/my_app_bar.dart';
 
@@ -34,29 +36,30 @@ class _HomePageState extends State<HomePage> {
           appBar: myAppBar(),
           body: Column(
             children: [
+              Spacer(),
               Text(
                 'choose the number system',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               SizedBox(height: 10),
-              custonDropdownList(),
+              CustonDropdownList(),
+              SizedBox(height: 10),
               Text(
                 'input the number',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               SizedBox(height: 10),
-              Container(
-                height: 50,
-                width: 300,
-                color: const Color.fromARGB(255, 118, 129, 146),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 12.0),
-                  child: TextField(
-                    onChanged: (value) {},
-                    keyboardType: TextInputType.number,
-                  ),
-                ),
+              CustomTextField(),
+              SizedBox(height: 10),
+              Text(
+                'choose the number system',
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
+              SizedBox(height: 10),
+              CustonDropdownList(),
+              SizedBox(height: 10),
+              CustomTextButton(),
+              Spacer(),
             ],
           ),
         ),
