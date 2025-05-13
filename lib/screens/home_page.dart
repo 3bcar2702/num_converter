@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:num_converter/screens/widgets/custom_text_button.dart';
-import 'package:num_converter/screens/widgets/custom_text_field.dart';
-import 'package:num_converter/screens/widgets/cutom_dropdown_list.dart';
-import 'package:num_converter/screens/widgets/my_app_bar.dart';
+import 'package:num_converter/widgets/custom_text_button.dart';
+import 'package:num_converter/widgets/custom_text_field.dart';
+import 'package:num_converter/widgets/cutom_dropdown_list.dart';
+import 'package:num_converter/widgets/my_app_bar.dart';
 
 List<DropdownMenuItem<String>> numSystems = [
   DropdownMenuItem(child: Text("binary"), value: "binary"),
