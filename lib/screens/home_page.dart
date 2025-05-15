@@ -21,6 +21,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String _inputValue = '';
+  String? _inputSystem;
+  String? _outputSystem;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -42,23 +46,52 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               SizedBox(height: 10),
-              CustonDropdownList(),
+              CustonDropdownList(
+                value: _inputSystem,
+                onChanged: (value) {
+                  setState(() {
+                    _inputSystem = value;
+                  });
+                },
+              ),
+
               SizedBox(height: 10),
               Text(
                 'input the number',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               SizedBox(height: 10),
-              CustomTextField(),
+              CustomTextField(
+                onChanged: (value) {
+                  setState(() {
+                    _inputValue = value;
+                  });
+                },
+              ),
               SizedBox(height: 10),
               Text(
                 'choose the number system',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               SizedBox(height: 10),
-              CustonDropdownList(),
+              CustonDropdownList(
+                value: _outputSystem,
+                onChanged: (value) {
+                  setState(() {
+                    _outputSystem = value;
+                  });
+                },
+              ),
               SizedBox(height: 10),
-              CustomTextButton(),
+              CustomTextButton(
+                inputValue: _inputValue,
+                fromSystem: _inputSystem,
+                toSystem: _outputSystem,
+                isEnabled:
+                    _inputValue.isNotEmpty &&
+                    _inputSystem != null &&
+                    _outputSystem != null,
+              ),
               Spacer(),
             ],
           ),

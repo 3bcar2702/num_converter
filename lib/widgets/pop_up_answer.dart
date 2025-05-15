@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:num_converter/services/binary_to_decimal.dart';
+import 'package:num_converter/services/conversion_service.dart';
 
 class PopUpAnswer extends StatelessWidget {
-  final String binaryInput;
+  final String inputValue;
+  final String fromSystem;
+  final String toSystem;
 
-  PopUpAnswer({required this.binaryInput});
+  const PopUpAnswer({
+    super.key,
+    required this.inputValue,
+    required this.fromSystem,
+    required this.toSystem,
+  });
 
   @override
   Widget build(BuildContext context) {
-    String result = BinaryToDecimal(binaryInput).converter();
+    String result = ConversionService.convert(
+      input: inputValue,
+      from: fromSystem,
+      to: toSystem,
+    );
 
     return AlertDialog(
       title: Text('Conversion Result'),
-      content: Text('Decimal Representation: $result'),
+      content: Text('$fromSystem → $toSystem:\n$result'),
       actions: <Widget>[
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop(); // إغلاق النافذة
+            Navigator.of(context).pop();
           },
           child: Text('Close'),
         ),

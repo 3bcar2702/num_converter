@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
-  @override
-  const CustomTextField({super.key});
+  final Function(String)? onChanged;
+
+  const CustomTextField({super.key, this.onChanged});
+
   @override
   _CustomTextField createState() => _CustomTextField();
 }
@@ -17,7 +19,7 @@ class _CustomTextField extends State<CustomTextField> {
       child: Padding(
         padding: const EdgeInsets.only(left: 12.0),
         child: TextField(
-          onChanged: (value) {},
+          onChanged: widget.onChanged,
           keyboardType: TextInputType.number,
         ),
       ),

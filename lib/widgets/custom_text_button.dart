@@ -1,34 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:num_converter/widgets/pop_up_answer.dart';
 
-class CustomTextButton extends StatefulWidget {
-  const CustomTextButton({super.key});
+class CustomTextButton extends StatelessWidget {
+  final String inputValue;
+  final String? fromSystem;
+  final String? toSystem;
+  final bool isEnabled;
 
-  @override
-  _CustomTextButton createState() => _CustomTextButton();
-}
+  const CustomTextButton({
+    super.key,
+    required this.inputValue,
+    required this.fromSystem,
+    required this.toSystem,
+    required this.isEnabled,
+  });
 
-class _CustomTextButton extends State<CustomTextButton> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        // هنا بنعرض الـ pop-up لما تضغط
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return PopUpAnswer(
-              binaryInput: '10',
-            ); // المثال ده بيحول "10" لبيناري
-          },
-        );
-      },
+      onPressed:
+          isEnabled
+              ? () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return PopUpAnswer(
+                      fromSystem: fromSystem!,
+                      toSystem: toSystem!,
+                      inputValue: inputValue,
+                    );
+                  },
+                );
+              }
+              : null, // ده بيخليه disabled لو isEnabled = false
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(
-          Color.fromARGB(119, 4, 153, 252),
+        backgroundColor: WidgetStateProperty.all(
+          isEnabled
+              ? const Color.fromARGB(119, 4, 153, 252)
+              : const Color.fromARGB(80, 150, 150, 150),
         ),
       ),
-      child: Text('convert', style: TextStyle(color: Colors.white)),
+      child: Text(
+        'convert',
+        style: TextStyle(color: isEnabled ? Colors.white : Colors.grey[300]),
+      ),
     );
   }
 }
