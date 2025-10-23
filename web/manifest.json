@@ -1,6 +1,6 @@
 {
-    "name": "num_converter",
-    "short_name": "num_converter",
+    "name": "baseify",
+    "short_name": "baseify",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
